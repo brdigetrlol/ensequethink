@@ -249,39 +249,43 @@ You should:
         properties: {
             thought: {
                 type: "string",
-                description: "Your current thinking step, structured according to the CSM Protocol v2"
+                description: "Your current thinking step"
             },
             nextThoughtNeeded: {
                 type: "boolean",
-                description: "Whether another thought step is needed to continue the CSM loop"
+                description: "Whether another thought step is needed"
             },
             thoughtNumber: {
                 type: "integer",
-                description: "Current thought number in the sequence",
+                description: "Current thought number",
                 minimum: 1
             },
             totalThoughts: {
                 type: "integer",
-                description: "Estimated total thoughts needed to complete the CSM loop",
+                description: "Estimated total thoughts needed",
                 minimum: 1
             },
             isRevision: {
                 type: "boolean",
-                description: "Must be `true` in the `SYNTHESIZE` state to mark plan revision"
+                description: "Whether this revises previous thinking"
             },
             revisesThought: {
                 type: "integer",
-                description: "Which `EXPLORE` thought is being reconsidered by `SYNTHESIZE`",
+                description: "Which thought is being reconsidered",
                 minimum: 1
             },
             branchFromThought: {
                 type: "integer",
-                description: "Branching point for `EXPLORE`, `CHALLENGE`, or `EXPAND` states",
+                description: "Branching point thought number",
                 minimum: 1
             },
             branchId: {
                 type: "string",
-                description: "The formal CSM state identifier, e.g., `'state: DECOMPOSE'` or `'state: EXPAND(database)'`"
+                description: "Branch identifier"
+            },
+            needsMoreThoughts: {
+                type: "boolean",
+                description: "If more thoughts are needed"
             }
         },
         required: ["thought", "nextThoughtNeeded", "thoughtNumber", "totalThoughts"]
